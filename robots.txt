@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://palascinsej194.github.io/mapp-aiyouxi-com-cn/sitemap.xml
