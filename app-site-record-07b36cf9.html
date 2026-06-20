@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG模拟器 · 产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef6f5; /* 极浅蓝绿底 */
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1a3b3a;
+      line-height: 1.6;
+      padding: 1.8rem 1.2rem 3.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    /* 网格卡片容器 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(2px);
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 8px 20px rgba(27, 94, 90, 0.06), 0 2px 6px rgba(0, 60, 55, 0.04);
+      border: 1px solid rgba(70, 150, 140, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(25, 95, 88, 0.10);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+      color: #14504c;
+      border-left: 4px solid #2f9b92;
+      padding-left: 0.7rem;
+    }
+
+    .card p, .card ul {
+      font-size: 0.95rem;
+      color: #1f4947;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card ul li::before {
+      content: "▹";
+      color: #2f9b92;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* hero区域 - 紧凑但有力 */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0b3b38;
+      line-height: 1.2;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #2e6b66;
+      background: rgba(55, 145, 138, 0.06);
+      display: inline-block;
+      padding: 0.2rem 1rem 0.2rem 0.6rem;
+      border-radius: 40px;
+      border-left: 3px solid #2f9b92;
+      max-width: fit-content;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 720px;
+      margin: 0.6rem 0 0.3rem;
+      color: #1a4a47;
+    }
+
+    .highlight-badge {
+      display: inline-block;
+      background: #d4f0ed;
+      color: #13534f;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid #54b8ae;
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    .faq-summary {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 1.3rem;
+      padding: 1.8rem 1.8rem 1.8rem 1.8rem;
+      margin-top: 2rem;
+      border: 1px solid #b5ddd7;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0a4a46;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .faq-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed #b5d4cf;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #104d49;
+      font-size: 0.95rem;
+    }
+
+    .faq-a {
+      color: #1b5450;
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+      line-height: 1.5;
+    }
+
+    .access-note {
+      background: linear-gradient(135deg, #e6f6f4 0%, #d5ece8 100%);
+      border-radius: 1rem;
+      padding: 1.2rem 1.6rem;
+      margin: 1.8rem 0 0.5rem;
+      border-left: 5px solid #27827b;
+      font-size: 0.95rem;
+      color: #07423e;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem 0.5rem;
+    }
+
+    .access-note strong {
+      color: #0b524c;
+    }
+
+    .inline-link {
+      color: #126b64;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid #53b8ae;
+      transition: border-color 0.15s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #0d423e;
+      color: #0a4b46;
+    }
+
+    .footnote {
+      margin-top: 3rem;
+      font-size: 0.75rem;
+      color: #4b7a76;
+      text-align: center;
+      border-top: 1px solid #b7d6d1;
+      padding-top: 1.2rem;
+      opacity: 0.8;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 540px) {
+      body {
+        padding: 0.9rem 0.8rem 2.5rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .hero .subhead {
+        font-size: 0.95rem;
+      }
+      .grid-cards {
+        gap: 1rem;
+      }
+      .card {
+        padding: 1.2rem 1rem;
+      }
+      .faq-summary {
+        padding: 1.2rem 1rem;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero: 简要摘要 -->
+  <div class="hero">
+    <h1>PG模拟器 · 对照与延伸</h1>
+    <div class="subhead">日常查询 · 快速比对 · 轻量参考</div>
+    <p>
+      一款聚焦于模式匹配与逻辑演练的桌面工具，面向需要反复核对参数、对比输出差异以及进行延伸阅读的使用者。
+      不依赖复杂环境，通过精简界面提供高密度信息呈现，适合开发调试、教学演示与个人学习场景。
+    </p>
+    <span class="highlight-badge">基于静态模拟 · 无持久状态</span>
+  </div>
+
+  <!-- 网格卡片：亮点 + 使用建议 -->
+  <div class="grid-cards">
+    <div class="card">
+      <h3>核心亮点</h3>
+      <ul>
+        <li>单项查询与批量对照并行</li>
+        <li>精简输出格式，降低认知负荷</li>
+        <li>内置常见参考模板，延伸阅读触手可及</li>
+        <li>完全本地逻辑，无远程依赖</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>使用建议</h3>
+      <ul>
+        <li>同时打开 2–3 个标签页对比不同模式</li>
+        <li>配合文档或 REPL 环境进行交叉验证</li>
+        <li>将模拟结果作为思路草稿，而非最终结论</li>
+        <li>清空缓存可重置所有自定义条目</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>适用场景</h3>
+      <ul>
+        <li>快速验证假设逻辑</li>
+        <li>教学时展示参数变化趋势</li>
+        <li>阅读源码前做表层行为摸底</li>
+        <li>跨版本行为对照</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 (高频疑问) -->
+  <div class="faq-summary">
+    <h2>❓ 常见疑问 · 摘要</h2>
+    <div class="faq-item">
+      <span class="faq-q">数据是否持久保存？</span>
+      <span class="faq-a">不主动存储任何输入或结果，刷新或关闭页面后数据即释放。适合临时性对照任务。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">可以当作生产环境使用吗？</span>
+      <span class="faq-a">仅用于参考与学习，未对极端或边界情况做完整验证。建议在隔离环境内使用。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">为什么强调“延伸阅读”？</span>
+      <span class="faq-a">工具内置文档链接与模式示例，方便从模拟结果跳转至更完整的规范或源码讨论。</span>
+    </div>
+  </div>
+
+  <!-- 可信但克制的访问说明（嵌入链接） -->
+  <div class="access-note">
+    <strong>⏺ 访问说明</strong>
+    <span>如需使用完整功能，可前往</span>
+    <a href="https://app-site-pg.com" class="inline-link">PG模拟器</a>
+    <span>页面（纯静态，无需注册）。</span>
+    <span style="opacity:0.75;">建议搭配现代浏览器以获得最佳栅格对齐效果。</span>
+  </div>
+
+  <!-- 补充一个小的延伸提示 -->
+  <div style="margin: 1.8rem 0 0.5rem; font-size: 0.9rem; color: #2b605b; background: #def0ec; padding: 0.8rem 1.2rem; border-radius: 40px; display: inline-block;">
+    ⚡ 提示：在对照模式下，可同时参考 <a href="https://app-site-pg.com" class="inline-link" style="border-bottom: 1px solid #328d85;">PG模拟器</a> 的默认示例与自定义输入。
+  </div>
+
+  <!-- 底边 -->
+  <div class="footnote">
+    产品说明 · 信息密度优先 · 版本参考 2025 · 无跟踪 / 无自动跳转
+  </div>
+
+</div>
+</body>
+</html>
