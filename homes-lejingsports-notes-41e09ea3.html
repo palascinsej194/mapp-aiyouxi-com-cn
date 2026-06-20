@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>乐竞体育 · 简明访问指南</title>
+  <style>
+    /* 重置与基础 */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #fbfbfb;
+      color: #2e2e2e;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* 窄正文宽 + 极简留白 */
+    .page {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.8rem 4rem;
+    }
+    /* 标题层级 – 清晰、不喧宾夺主 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      color: #1a1a1a;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 2.6rem;
+      margin-bottom: 0.8rem;
+      color: #1f1f1f;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-top: 1.8rem;
+      margin-bottom: 0.4rem;
+      color: #2a2a2a;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    /* 链接 — 自然嵌入，不刻意 */
+    a {
+      color: #1a5b8c;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+    a:hover {
+      border-bottom-color: #1a5b8c;
+    }
+    /* hero 区 – 干净，有呼吸感 */
+    .hero {
+      margin-bottom: 2.2rem;
+    }
+    .hero .subhead {
+      font-size: 1rem;
+      color: #6b6b6b;
+      letter-spacing: 0.02em;
+      margin-top: 0.2rem;
+      font-weight: 400;
+    }
+    .hero .subhead span {
+      background: #f0f0f0;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: #3f3f3f;
+    }
+    /* 卡片式优势区 – 极简白卡片 */
+    .advantages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.8rem 0 1rem;
+    }
+    .advantage-item {
+      flex: 1 1 180px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.4rem 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+      transition: box-shadow 0.2s;
+    }
+    .advantage-item:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .advantage-item .emoji-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .advantage-item h4 {
+      font-weight: 500;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      color: #1d1d1d;
+    }
+    .advantage-item p {
+      font-size: 0.9rem;
+      color: #5a5a5a;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+    /* 说明区 – 文本为主 */
+    .guide-note {
+      background: #f7f9fb;
+      padding: 1.4rem 1.6rem;
+      border-radius: 18px;
+      margin: 2rem 0;
+      border-left: 4px solid #1a5b8c;
+    }
+    .guide-note p:last-child {
+      margin-bottom: 0;
+    }
+    /* FAQ 摘要 – 紧凑干净 */
+    .faq-summary {
+      margin-top: 2rem;
+    }
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+    .faq-item .question {
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+      color: #222;
+    }
+    .faq-item .answer {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    /* 底部链接区 */
+    .footer-links {
+      margin-top: 3.2rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e6e6e6;
+      font-size: 0.9rem;
+      color: #6b6b6b;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .footer-links a {
+      color: #2e2e2e;
+      border-bottom: none;
+      font-weight: 450;
+    }
+    .footer-links a:hover {
+      opacity: 0.7;
+    }
+    .footer-links .main-link {
+      font-size: 1rem;
+    }
+    .footer-links .meta {
+      color: #9a9a9a;
+    }
+    /* 响应式微调 */
+    @media (max-width: 500px) {
+      .page {
+        padding: 2rem 1.2rem 3rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .advantages {
+        gap: 0.9rem;
+      }
+      .advantage-item {
+        flex: 1 1 140px;
+        padding: 1rem;
+      }
+      .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero 区 -->
+    <header class="hero">
+      <h1>乐竞体育 <span style="font-weight: 400; font-size: 0.7em; color: #888;">· 简明指南</span></h1>
+      <div class="subhead">
+        <span>访问提醒</span> 从熟悉界面到快速浏览，一篇帮你上手的轻量说明。
+      </div>
+    </header>
+
+    <!-- 优势区：卡片式陈列 -->
+    <section>
+      <h2>为什么选择这里</h2>
+      <div class="advantages">
+        <div class="advantage-item">
+          <div class="emoji-icon">⚡</div>
+          <h4>直达核心</h4>
+          <p>页面结构清晰，赛事、数据、动态分区明确，不用到处翻找。</p>
+        </div>
+        <div class="advantage-item">
+          <div class="emoji-icon">📱</div>
+          <h4>多端适配</h4>
+          <p>电脑、平板、手机都能流畅浏览，排版自动适应屏幕宽度。</p>
+        </div>
+        <div class="advantage-item">
+          <div class="emoji-icon">🔍</div>
+          <h4>信息透明</h4>
+          <p>各项内容展示直白，没有多余干扰项，专注浏览本身。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区：从“简明指南和访问提醒”角度 -->
+    <section class="guide-note">
+      <h3 style="margin-top: 0; border-bottom: none; padding-bottom: 0;">📌 访问前的小提醒</h3>
+      <p>如果你是第一次访问 <a href="https://homes-lejingsports.com">乐竞体育</a>，建议先花两分钟熟悉一下导航布局。首页通常展示当前重点推荐，右侧或顶部菜单可以切换到不同板块。</p>
+      <p>部分页面可能需要加载外部资源，首次打开时请稍等片刻。遇到任何显示问题，可以先尝试刷新页面或检查网络连接——多数情况都能快速恢复。</p>
+    </section>
+
+    <!-- 额外说明：用生活化语气 -->
+    <section>
+      <h3>实际使用场景</h3>
+      <p>中午休息时打开手机，翻一翻当天的赛事列表；晚上用电脑看看数据分析和回放片段。不需要注册也能浏览大部分内容，非常自由。</p>
+      <p>信息更新节奏比较稳定，重要变化会以标签或高亮形式标记。如果对某个板块有疑问，随时可以回到首页寻找入口指引。</p>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section class="faq-summary">
+      <h2>常见疑问 · 摘要</h2>
+      <div class="faq-item">
+        <div class="question">▸ 需要下载额外软件吗？</div>
+        <div class="answer">不需要。基于浏览器直接访问，没有强制安装或额外插件要求。</div>
+      </div>
+      <div class="faq-item">
+        <div class="question">▸ 移动端体验如何？</div>
+        <div class="answer">页面针对触控做了优化，按钮和链接间距合理，横竖屏均可正常使用。</div>
+      </div>
+      <div class="faq-item">
+        <div class="question">▸ 内容更新频率怎样？</div>
+        <div class="answer">动态内容保持日常更新，静态说明页也会不定期调整以保持清晰。</div>
+      </div>
+    </section>
+
+    <!-- 底部链接区：自然嵌入主要链接，不加“进入、点击”等词 -->
+    <footer class="footer-links">
+      <div>
+        <span class="main-link"><a href="https://homes-lejingsports.com">乐竞体育</a></span>
+        <span class="meta"> · 首页</span>
+      </div>
+      <div>
+        <span class="meta">简明指南 · 访问提醒</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
